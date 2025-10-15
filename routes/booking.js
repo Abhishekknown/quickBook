@@ -9,6 +9,12 @@ router.post("/create", async (req, res) => {
   try {
     const { name, email, phone, service, timeSlot, amount } = req.body;
 
+     console.log(
+      "Razorpay vars →",
+      process.env.RAZORPAY_KEY_ID?.slice(0, 10),
+      process.env.RAZORPAY_KEY_SECRET ? "✅ secret present" : "❌ secret missing"
+    );
+
     const razorpay = new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
       key_secret: process.env.RAZORPAY_KEY_SECRET,
